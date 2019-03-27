@@ -37,7 +37,7 @@ public class RandomExt {
 	 * @param max 最大值
 	 */
 	public static int range(int max) {
-		return random.nextInt(max);
+		return random.nextInt(max + 1);
 	}
 
 	/**
