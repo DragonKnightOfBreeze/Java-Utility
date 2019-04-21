@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Java Utility.iml" filepath="$PROJECT_DIR$/Java Utility.iml" />
-      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
-      <module fileurl="file://$PROJECT_DIR$/extra/extra.iml" filepath="$PROJECT_DIR$/extra/extra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-utility-base/java-utility-base.iml" filepath="$PROJECT_DIR$/java-utility-base/java-utility-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-utility-extra/java-utility-extra.iml" filepath="$PROJECT_DIR$/java-utility-extra/java-utility-extra.iml" />
     </modules>
   </component>
 </project>

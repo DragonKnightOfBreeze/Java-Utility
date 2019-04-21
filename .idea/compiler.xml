@@ -6,17 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="extra" />
         <module name="java-utility-base" />
-        <module name="base" />
+        <module name="java-utility-extra" />
         <module name="Utility" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="base" target="11" />
-      <module name="extra" target="11" />
-      <module name="Java Utility" target="11" />
+      <module name="Java Utility" target="12(Preview)" />
       <module name="java-utility-base" target="11" />
+      <module name="java-utility-extra" target="11" />
       <module name="Utility" target="11" />
       <module name="utility" target="11" />
     </bytecodeTargetLevel>
