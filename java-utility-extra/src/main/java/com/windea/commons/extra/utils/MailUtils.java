@@ -107,7 +107,7 @@ public class MailUtils {
 	 * @param attachInfo 附件信息，[filePath...,fileName]，默认为null
 	 */
 	public static void send(@NotNull String host, @NotNull String fromEmail, @NotNull String toEmail,
-			@NotNull String subject, @NotNull String content, @NotNull ContentType contentType, String[] authInfo,
+		@NotNull String subject, @NotNull String content, @NotNull ContentType contentType, final String[] authInfo,
 			String[] attachInfo) {
 		// 获取系统属性
 		Properties properties = new Properties();

@@ -12,9 +12,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Java Utility" target="12(Preview)" />
-      <module name="java-utility-base" target="11" />
-      <module name="java-utility-extra" target="11" />
+      <module name="Java Utility" target="11" />
+      <module name="java-utility-base" target="1.5" />
+      <module name="java-utility-extra" target="1.5" />
       <module name="Utility" target="11" />
       <module name="utility" target="11" />
     </bytecodeTargetLevel>

@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<name>Java Utility</name>
-	<description>Java实用代码整理</description>
+	<description>Java实用代码整理。</description>
 	<url>https://github.com/DragonKnightOfBreeze/Java-Utility</url>
 
 	<scm>
@@ -20,7 +20,9 @@
 	</scm>
 
 	<properties>
-		<java.version>12(Preview)</java.version>
+		<java.version>11</java.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 
 	<modules>
@@ -39,7 +41,6 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!--JUnit-->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
@@ -47,19 +48,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<compilerArgument>--enable-preview</compilerArgument>
-					<testCompilerArgument>--enable-preview</testCompilerArgument>
-					<source>12(Preview)</source>
-					<target>12(Preview)</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
