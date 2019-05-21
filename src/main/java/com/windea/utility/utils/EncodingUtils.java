@@ -17,7 +17,7 @@ public class EncodingUtils {
 	private static final Log log = LogFactory.getLog(EncodingUtils.class);
 	private static final String ISO_8859_1 = "ISO-8859-1";
 	private static final String UTF_8 = "UTF-8";
-	private static final String FAILED_TO_ENCODING = "Failed to encoding.";
+	private static final String FAILED_TO_ENCODING = "Failed toFile encoding.";
 	private static final String FILE_DOES_NOT_EXIST = "File does not exist, return the origin param 'file'.";
 	private static final String FILE_CANNOT_READ_OR_WRITE = "File cannot read or write.";
 

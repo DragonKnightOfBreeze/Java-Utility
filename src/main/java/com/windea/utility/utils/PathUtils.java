@@ -8,11 +8,12 @@ import java.util.UUID;
  * 路径的工具类。
  */
 public class PathUtils {
-	private PathUtils() {}
+	private PathUtils() {
+	}
 
 
 	/**
-	 * 组成完整路径。
+	 * 组成完整路径，允许混合两种分隔符。
 	 */
 	@NotNull
 	public static String join(@NotNull String... path) {
@@ -20,7 +21,7 @@ public class PathUtils {
 	}
 
 	/**
-	 * 得到文件名（只有名字，没有路径）。
+	 * 得到文件名。
 	 */
 	@NotNull
 	public static String getFileName(@NotNull String filePath) {
@@ -31,26 +32,33 @@ public class PathUtils {
 	}
 
 	/**
-	 * 得到切去拓展名的文件名（只有名字，没有路径）。
+	 * 得到切去扩展名的文件路径。
 	 */
 	@NotNull
-	public static String getFileShotName(@NotNull String filePath) {
-		String fileName = getFileName(filePath);
-		int index = filePath.lastIndexOf(".");
+	public static String subFileExt(@NotNull String fileName) {
+		int index = fileName.lastIndexOf(".");
 		if(index == -1)
-			return filePath;
-		return filePath.substring(0, index - 1);
+			return fileName;
+		return fileName.substring(0, index - 1);
 	}
 
 	/**
-	 * 得到文件的扩展名。如果没有，则返回空字符串。
+	 * 得到带有"."的文件扩展名。如果没有，则返回空字符串。
 	 */
 	@NotNull
-	public static String getFileExt(@NotNull String fileName) {
-		int index = fileName.lastIndexOf(".");
+	public static String getFileExt(@NotNull String filePath) {
+		int index = filePath.lastIndexOf(".");
 		if(index == -1)
 			return "";
-		return fileName.substring(index + 1);
+		return filePath.substring(index);
+	}
+
+	/**
+	 * 更改带有"."的文件扩展名。
+	 */
+	@NotNull
+	public static String changeFileExt(@NotNull String filePath, @NotNull String newFileExt) {
+		return subFileExt(filePath) + newFileExt;
 	}
 
 	/**
