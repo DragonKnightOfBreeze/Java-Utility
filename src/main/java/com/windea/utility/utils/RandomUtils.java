@@ -9,7 +9,9 @@ import java.util.Random;
 public class RandomUtils {
 	private static final Random random = new SecureRandom();
 
+
 	private RandomUtils() {}
+
 
 	/**
 	 * 生成指定范围内的随机数。<br>

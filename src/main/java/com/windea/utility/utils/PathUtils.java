@@ -2,7 +2,6 @@ package com.windea.utility.utils;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
 import java.util.UUID;
 
 /**
@@ -11,12 +10,13 @@ import java.util.UUID;
 public class PathUtils {
 	private PathUtils() {}
 
+
 	/**
 	 * 组成完整路径。
 	 */
 	@NotNull
 	public static String join(@NotNull String... path) {
-		return (String.join(File.separator, path));
+		return (String.join("\\", path).replace("", "\\"));
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class PathUtils {
 	 * 得到切去拓展名的文件名（只有名字，没有路径）。
 	 */
 	@NotNull
-	public static String getShotFileName(@NotNull String filePath) {
+	public static String getFileShotName(@NotNull String filePath) {
 		String fileName = getFileName(filePath);
 		int index = filePath.lastIndexOf(".");
 		if(index == -1)
@@ -46,7 +46,7 @@ public class PathUtils {
 	 * 得到文件的扩展名。如果没有，则返回空字符串。
 	 */
 	@NotNull
-	public static String getExtFileName(@NotNull String fileName) {
+	public static String getFileExt(@NotNull String fileName) {
 		int index = fileName.lastIndexOf(".");
 		if(index == -1)
 			return "";

@@ -1,9 +1,8 @@
 package com.windea.utility.generator;
 
-import base.annotation.*;
+import com.windea.utility.annotation.*;
 import com.windea.utility.exception.NotImplementedException;
 import com.windea.utility.utils.MathUtils;
-import com.windea.utility.annotation.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
@@ -24,6 +23,7 @@ public class TextGenerator implements TGenerator {
 
 
 	private TextGenerator() {}
+
 
 	/** 实例化空的文本生成器。 */
 	public static TextGenerator gen() {

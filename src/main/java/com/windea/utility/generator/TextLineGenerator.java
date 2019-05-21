@@ -20,6 +20,7 @@ public class TextLineGenerator implements TGenerator {
 		this.lines = lines;
 	}
 
+
 	/** 实例化每行文本生成器。 */
 	public static TextLineGenerator gen(Stream<String> lines) {
 		return new TextLineGenerator(lines);

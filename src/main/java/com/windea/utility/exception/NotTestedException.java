@@ -6,6 +6,7 @@ package com.windea.utility.exception;
 public class NotTestedException extends RuntimeException {
 	private static final long serialVersionUID = 1357551786311081873L;
 
+
 	public NotTestedException() {
 		super("Not tested code!");
 	}

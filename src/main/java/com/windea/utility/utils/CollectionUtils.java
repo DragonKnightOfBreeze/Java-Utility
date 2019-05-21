@@ -11,6 +11,7 @@ import java.util.Map;
 public class CollectionUtils {
 	private CollectionUtils() {}
 
+
 	/**
 	 * 判断集合是否为null、为空。<br>
 	 * 空值安全。
@@ -43,7 +44,6 @@ public class CollectionUtils {
 		return collection != null && collection.size() <= length;
 	}
 
-
 	/**
 	 * 连接两个集合。可以指定是否去掉重复项。
 	 */
@@ -70,7 +70,6 @@ public class CollectionUtils {
 		}
 		return collection;
 	}
-
 
 	/**
 	 * 判断映射是否为null、为空。<br>
@@ -103,7 +102,6 @@ public class CollectionUtils {
 	public static <M extends Map<K, V>, K, V> boolean isGreaterE(@Nullable M map, int length) {
 		return map != null && map.size() <= length;
 	}
-
 
 	/**
 	 * 连接两个映射。可以指定是否覆盖重复项。

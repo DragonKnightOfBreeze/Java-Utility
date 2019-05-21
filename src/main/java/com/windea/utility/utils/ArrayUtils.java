@@ -10,6 +10,7 @@ import java.util.Arrays;
 public class ArrayUtils {
 	private ArrayUtils() {}
 
+
 	/**
 	 * 判断数组是否为null、为空。<br>
 	 * 空值安全。
@@ -42,7 +43,6 @@ public class ArrayUtils {
 		return array != null && array.length <= length;
 	}
 
-
 	/**
 	 * 连接两个数组。可以指定是否去掉重复项。
 	 */
@@ -71,7 +71,6 @@ public class ArrayUtils {
 		}
 		return list.toArray(array);
 	}
-
 
 	/**
 	 * 将基本类型数组转化为包装对象数组。

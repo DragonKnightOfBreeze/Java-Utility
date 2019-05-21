@@ -9,12 +9,12 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * 通用实体类接口 - 实现通用的equals、hashCode、toString方法。<br>
- * WARN 由于采用了反射技术，可能会影响性能。
+ * 通用实体类 - 实现通用的equals、hashCode、toString方法。
  */
 @PerformanceAffectPossible
 public abstract class TBean<ID> implements Serializable {
 	private static final long serialVersionUID = 7786447621429565474L;
+
 
 	public abstract ID getId();
 

@@ -6,6 +6,7 @@ package com.windea.utility.exception;
 public class NotImplementedException extends RuntimeException {
 	private static final long serialVersionUID = 1221511937742237208L;
 
+
 	public NotImplementedException() {
 		super("Not implemented code!");
 	}

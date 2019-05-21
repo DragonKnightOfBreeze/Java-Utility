@@ -37,7 +37,6 @@ public class StringUtils {
 		return str == null || str.isBlank();
 	}
 
-
 	/**
 	 * 判断字符串是否为null、小于等于指定长度。<br>
 	 * 空值安全。
@@ -92,14 +91,12 @@ public class StringUtils {
 		return false;
 	}
 
-
 	/**
 	 * 判断两个字符串是否相等。<br>
 	 * 空值安全。
 	 * @param str 指定的字符串
 	 * @param secStr 第二个字符串
 	 */
-	@Contract(value = "null, null -> true; null, !null -> false; !null, null -> false", pure = true)
 	public static boolean equals(@Nullable String str, @Nullable String secStr) {
 		if(str == null && secStr == null) {
 			return true;
@@ -116,7 +113,6 @@ public class StringUtils {
 	 * @param str 指定的字符串
 	 * @param secStr 第二个字符串
 	 */
-	@Contract(value = "null, null -> true; null, !null -> false; !null, null -> false", pure = true)
 	public static boolean equalsIB(@Nullable String str, @Nullable String secStr) {
 		if(str == null && secStr == null) {
 			return true;
@@ -133,7 +129,6 @@ public class StringUtils {
 	 * @param str 指定的字符串
 	 * @param secStr 第二个字符串
 	 */
-	@Contract(value = "null, null -> true; null, !null -> false; !null, null -> false", pure = true)
 	public static boolean equalsIC(@Nullable String str, @Nullable String secStr) {
 		if(str == null && secStr == null) {
 			return true;
@@ -150,7 +145,6 @@ public class StringUtils {
 	 * @param str 指定的字符串
 	 * @param secStr 第二个字符串
 	 */
-	@Contract(value = "null, null -> true; null, !null -> false; !null, null -> false", pure = true)
 	public static boolean equalsIBC(@Nullable String str, @Nullable String secStr) {
 		if(str == null && secStr == null) {
 			return true;
@@ -167,7 +161,6 @@ public class StringUtils {
 	 * @param str 指定的字符串
 	 * @param e 第二个枚举值
 	 */
-	@Contract(value = "null, null -> true; null, !null -> false; !null, null -> false", pure = true)
 	public static <E extends Enum> boolean equalsE(@Nullable String str, @Nullable E e) {
 		if(str == null && e == null) {
 			return true;
@@ -177,7 +170,6 @@ public class StringUtils {
 			return e.toString().equals(str);
 		}
 	}
-
 
 	/**
 	 * 将指定的字符串转化为整型数值（忽略空白）。如果失败，则转化为默认值。<br>
@@ -310,7 +302,6 @@ public class StringUtils {
 	public static <E extends Enum> E toEnum(@Nullable String str, @Nullable Class<E> clazz) {
 		return toEnum(str, clazz, null);
 	}
-
 
 	/**
 	 * 模拟模版字符串。<br>
