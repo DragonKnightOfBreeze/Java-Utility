@@ -33,8 +33,6 @@ public class StringGen implements TextGen<StringGen> {
 	private StringGen() {
 	}
 
-	//静态生成方法
-
 	public static StringGen empty() {
 		return new StringGen();
 	}
@@ -73,13 +71,6 @@ public class StringGen implements TextGen<StringGen> {
 		return join(joinText, texts);
 	}
 
-
-	//属性
-
-	@Override
-	public String text() {
-		return builder.toString();
-	}
 
 	//添加方法
 
@@ -237,5 +228,19 @@ public class StringGen implements TextGen<StringGen> {
 	@NotImplemented
 	public StringGen formatByName(Object... args) {
 		throw new NotImplementedException();
+	}
+
+
+	//输出
+
+	@Override
+	public String text() {
+		return builder.toString();
+	}
+
+	@Deprecated
+	@Override
+	public String toString() {
+		return text();
 	}
 }
