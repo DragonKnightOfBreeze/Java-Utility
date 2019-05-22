@@ -30,14 +30,14 @@ fun String.endsWith(vararg suffixes: String, ignoreCase: Boolean = false): Boole
  * 将字符串转换为camelCase。
  */
 fun String.toCamelCase(): String {
-	throw NotImplementedError()
+	TODO()
 }
 
 /**
  * 转换字符串的显示格式。
  */
 fun String.switchCase(fromCase: StringCase, toCase: StringCase): String {
-	throw NotImplementedError()
+	TODO()
 }
 
 enum class StringCase {
