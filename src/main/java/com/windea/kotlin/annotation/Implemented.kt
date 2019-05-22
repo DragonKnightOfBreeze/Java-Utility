@@ -1,3 +1,5 @@
+package com.windea.kotlin.annotation
+
 /**
  * 已完成的代码的注解。
  */
