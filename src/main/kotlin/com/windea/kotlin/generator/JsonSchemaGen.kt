@@ -1,21 +1,28 @@
+@file:Suppress("unused", "UNUSED_PARAMETER", "MemberVisibilityCanBePrivate")
+
 package com.windea.kotlin.generator
 
-import com.windea.java.exception.NotImplementedException
+import com.windea.kotlin.utils.JsonUtils
 import com.windea.kotlin.utils.YamlUtils
-import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
-
 import java.util.*
+import kotlin.collections.HashMap
+import kotlin.collections.HashSet
 
-class JsonSchemaGen private constructor(private val schemaMap: Map<*, *>) : TextGen<JsonSchemaGen> {
+class JsonSchemaGen private constructor() : TextGen<JsonSchemaGen> {
+	private var schemaMap: MutableMap<String, Any?> = HashMap()
+	private var ruleSet: MutableSet<JsonSchemaRule> = HashSet()
 
-	private val ruleSet: MutableSet<JsonSchemaRule>? = null
 
+	//属性
+
+	override val text: String
+		get() = JsonUtils.toString(schemaMap)
 
 	//配置生成器
 
 	fun addRules(vararg rules: JsonSchemaRule): JsonSchemaGen {
-		ruleSet!!.addAll(Arrays.asList(*rules))
+		ruleSet.addAll(Arrays.asList(*rules))
 		return this
 	}
 
@@ -25,25 +32,24 @@ class JsonSchemaGen private constructor(private val schemaMap: Map<*, *>) : Text
 	//输出
 
 	fun generate(jsonSchemaPath: String) {
-		throw NotImplementedException()
+		JsonUtils.toFile(schemaMap, jsonSchemaPath)
 	}
 
-	override fun text(): String {
-		throw NotImplementedException()
-	}
-
-	@Deprecated("", ReplaceWith("text()"))
+	@Deprecated("", ReplaceWith("text"))
 	override fun toString(): String {
-		return text()
+		return text
 	}
+
+	//伴生生成方法
 
 	companion object {
 		private val log = LogFactory.getLog(JsonSchemaGen::class.java)
 
 		@Throws(Exception::class)
 		private fun fromYaml(yamlPath: String): JsonSchemaGen {
-			val schemaMap = YamlUtils.fromFile(yamlPath)
-			return JsonSchemaGen(schemaMap)
+			val gen = JsonSchemaGen()
+			gen.schemaMap = YamlUtils.fromFile(yamlPath).toMutableMap()
+			return gen
 		}
 	}
 }

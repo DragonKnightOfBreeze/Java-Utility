@@ -5,7 +5,7 @@ import java.util.function.Predicate
 //判断方法
 
 /**
- * 判断字符串是否以指定的任意前缀[prefixes]开始。
+ * 判断字符串是否以指定的任意前缀 [prefixes] 开始。
  */
 fun String.startsWith(vararg prefixes: String, ignoreCase: Boolean = false): Boolean {
 	for (prefix in prefixes)
@@ -15,7 +15,7 @@ fun String.startsWith(vararg prefixes: String, ignoreCase: Boolean = false): Boo
 }
 
 /**
- * 判断字符串是否以指定的任意后缀[suffixes]开始。
+ * 判断字符串是否以指定的任意后缀 [suffixes] 开始。
  */
 fun String.endsWith(vararg suffixes: String, ignoreCase: Boolean = false): Boolean {
 	for (suffix in suffixes)
@@ -64,14 +64,14 @@ enum class StringCase {
 //控制方法
 
 /**
- * 如果满足条件[condition]，则保留这段文本。
+ * 如果满足条件 [condition] ，则保留这段文本。
  */
 fun String.where(condition: Boolean): String {
 	return if (condition) "" else this
 }
 
 /**
- * 如果满足条件预测[predicate]，则保留这段文本。
+ * 如果满足条件预测 [predicate] ，则保留这段文本。
  */
 fun <T : Any> String.where(pointer: T, predicate: Predicate<T>): String {
 	val condition = predicate.test(pointer)
@@ -81,7 +81,7 @@ fun <T : Any> String.where(pointer: T, predicate: Predicate<T>): String {
 //修改方法
 
 /**
- * 根据指定的前缀[prefix]和后缀[suffix]，包围字符串。
+ * 根据指定的前缀 [prefix] 和后缀 [suffix] ，包围字符串。
  */
 fun String.surround(prefix: String, suffix: String, ignoreEmpty: Boolean = true): String {
 	val condition = ignoreEmpty && this.isEmpty()
@@ -90,7 +90,7 @@ fun String.surround(prefix: String, suffix: String, ignoreEmpty: Boolean = true)
 }
 
 /**
- * 根据指定的前后缀[fix]，包围字符串。
+ * 根据指定的前后缀 [fix] ，包围字符串。
  */
 fun String.surround(fix: String, ignoreEmpty: Boolean): String {
 	return surround(fix, fix, ignoreEmpty)

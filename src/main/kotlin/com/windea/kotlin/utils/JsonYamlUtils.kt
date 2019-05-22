@@ -1,8 +1,10 @@
+@file:Suppress("unused", "UNUSED_PARAMETER", "MemberVisibilityCanBePrivate")
+
 package com.windea.kotlin.utils
 
 object JsonYamlUtils {
 	/**
-	 * 将指定路径[path]的json文件转化为相同文件名的yaml文件。
+	 * 将指定路径 [path] 的json文件转化为相同文件名的yaml文件。
 	 */
 	@Throws(Exception::class)
 	fun jsonToYamlFile(path: String) {
@@ -10,7 +12,7 @@ object JsonYamlUtils {
 	}
 
 	/**
-	 * 将指定路径[jsonPath]的json文件转化为指定路径[yamlPath]的yaml文件。
+	 * 将指定路径 [jsonPath] 的json文件转化为指定路径 [yamlPath] 的yaml文件。
 	 */
 	@Throws(Exception::class)
 	fun jsonToYamlFile(jsonPath: String, yamlPath: String) {
@@ -19,7 +21,7 @@ object JsonYamlUtils {
 	}
 
 	/**
-	 * 将指定路径[path]的yaml文件转化为相同文件名的json文件。
+	 * 将指定路径 [path] 的yaml文件转化为相同文件名的json文件。
 	 */
 	@Throws(Exception::class)
 	fun yamlToJsonFile(path: String) {
@@ -27,7 +29,7 @@ object JsonYamlUtils {
 	}
 
 	/**
-	 * 将指定路径[yamlPath]的yaml文件转化为指定路径[jsonPath]的json文件。
+	 * 将指定路径 [yamlPath] 的yaml文件转化为指定路径 [jsonPath] 的json文件。
 	 */
 	@Throws(Exception::class)
 	fun yamlToJsonFile(yamlPath: String, jsonPath: String) {
