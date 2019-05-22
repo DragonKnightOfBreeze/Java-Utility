@@ -1,5 +1,3 @@
-@file:Suppress("unused", "UNUSED_PARAMETER", "MemberVisibilityCanBePrivate")
-
 package com.windea.kotlin.utils
 
 import org.apache.commons.logging.Log

@@ -1,5 +1,3 @@
-@file:Suppress("unused", "UNUSED_PARAMETER", "MemberVisibilityCanBePrivate")
-
 package com.windea.kotlin.generator
 
 import com.windea.kotlin.utils.JsonUtils
@@ -35,7 +33,6 @@ class JsonSchemaGen private constructor() : TextGen<JsonSchemaGen> {
 		JsonUtils.toFile(schemaMap, jsonSchemaPath)
 	}
 
-	@Deprecated("", ReplaceWith("text"))
 	override fun toString(): String {
 		return text
 	}
