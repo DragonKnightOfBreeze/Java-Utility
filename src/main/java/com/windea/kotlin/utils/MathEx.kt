@@ -13,7 +13,7 @@ object MathEx {
 		if (number >= min)
 			return number
 		//如果message不为空则执行这段代码
-		message?.let { log.warn(message) }
+		message?.run { log.warn(this) }
 		return min
 	}
 
@@ -23,7 +23,7 @@ object MathEx {
 	fun min(number: Float, min: Float, message: String? = null): Float {
 		if (number >= min)
 			return number
-		message?.let { log.warn(message) }
+		message?.run { log.warn(this) }
 		return min
 	}
 
@@ -33,7 +33,7 @@ object MathEx {
 	fun max(number: Int, max: Int, message: String? = null): Int {
 		if (number <= max)
 			return number
-		message?.let { log.warn(message) }
+		message?.run { log.warn(this) }
 		return max
 	}
 
@@ -43,7 +43,7 @@ object MathEx {
 	fun max(number: Float, max: Float, message: String? = null): Float {
 		if (number <= max)
 			return number
-		message?.let { log.warn(message) }
+		message?.run { log.warn(this) }
 		return max
 	}
 
@@ -53,7 +53,7 @@ object MathEx {
 	fun clamp(number: Int, min: Int, max: Int, message: String? = null): Int {
 		if (number in min..max)
 			return number
-		message?.let { log.warn(message) }
+		message?.run { log.warn(this) }
 		return if (number < min) min else max
 	}
 
@@ -63,7 +63,7 @@ object MathEx {
 	fun clamp(number: Float, min: Float, max: Float, message: String? = null): Float {
 		if (number in min..max)
 			return number
-		message?.let { log.warn(message) }
+		message?.run { log.warn(this) }
 		return if (number < min) min else max
 	}
 
