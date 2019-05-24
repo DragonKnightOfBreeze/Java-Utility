@@ -13,7 +13,7 @@ object MathEx {
 		if (number >= min)
 			return number
 		//如果message不为空则执行这段代码
-		message?.apply { log.warn(message) }
+		message?.let { log.warn(message) }
 		return min
 	}
 
@@ -23,7 +23,7 @@ object MathEx {
 	fun min(number: Float, min: Float, message: String? = null): Float {
 		if (number >= min)
 			return number
-		message?.apply { log.warn(message) }
+		message?.let { log.warn(message) }
 		return min
 	}
 
@@ -33,7 +33,7 @@ object MathEx {
 	fun max(number: Int, max: Int, message: String? = null): Int {
 		if (number <= max)
 			return number
-		message?.apply { log.warn(message) }
+		message?.let { log.warn(message) }
 		return max
 	}
 
@@ -43,7 +43,7 @@ object MathEx {
 	fun max(number: Float, max: Float, message: String? = null): Float {
 		if (number <= max)
 			return number
-		message?.apply { log.warn(message) }
+		message?.let { log.warn(message) }
 		return max
 	}
 
@@ -53,7 +53,7 @@ object MathEx {
 	fun clamp(number: Int, min: Int, max: Int, message: String? = null): Int {
 		if (number in min..max)
 			return number
-		message?.apply { log.warn(message) }
+		message?.let { log.warn(message) }
 		return if (number < min) min else max
 	}
 
@@ -63,21 +63,21 @@ object MathEx {
 	fun clamp(number: Float, min: Float, max: Float, message: String? = null): Float {
 		if (number in min..max)
 			return number
-		message?.apply { log.warn(message) }
+		message?.let { log.warn(message) }
 		return if (number < min) min else max
 	}
 
 	/**
 	 * 夹值方法，从0到1。可以指定适用处理后的警告消息 [message] 。
 	 */
-	fun clamp01(number: Float, min: Float, max: Float, message: String? = null): Float {
+	fun clamp01(number: Float, message: String? = null): Float {
 		return clamp(number, 0f, 1f, message)
 	}
 
 	/**
 	 * 夹值方法，从-1到1。可以指定适用处理后的警告消息 [message] 。
 	 */
-	fun clampAbs1(number: Float, min: Float, max: Float, message: String? = null): Float {
+	fun clampAbs1(number: Float, message: String? = null): Float {
 		return clamp(number, -1f, 1f, message)
 	}
 
