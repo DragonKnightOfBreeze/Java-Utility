@@ -31,12 +31,13 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 		return this
 	}
 	
-	private fun doRulesRec(map: MutableMap<String, Any?>) {
+	//标记为尾部调用以增强性能
+	private tailrec fun doRulesRec(map: MutableMap<String, Any?>) {
 		map.keys.forEach { key ->
 			//如果值为映射，则继续向下递归遍历，否则检查是否匹配规则名
 			val value = map[key]
 			if (value is MutableMap<*, *>) {
-				doRulesRec(value as MutableMap<String, Any?>)
+				return doRulesRec(value as MutableMap<String, Any?>)
 			} else {
 				//如果找到了对应规则名的规则，则执行规则并替换
 				ruleMap[key]?.let {
