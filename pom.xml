@@ -82,6 +82,7 @@
               <goal>compile</goal>
             </goals>
             <configuration>
+              <args>-jvm-target 11</args>
               <sourceDirs>
                 <source>src/main/kotlin</source>
               </sourceDirs>
@@ -118,6 +119,4 @@
       </plugin>
     </plugins>
   </build>
-
-
 </project>
