@@ -2,7 +2,7 @@
 
 package com.windea.kotlin.generator
 
-import com.windea.java.annotation.NotTested
+import com.windea.kotlin.annotation.NotTested
 import com.windea.kotlin.utils.JsonUtils
 import com.windea.kotlin.utils.YamlUtils
 import org.apache.commons.logging.LogFactory
@@ -13,20 +13,23 @@ import org.apache.commons.logging.LogFactory
 @NotTested
 class JsonSchemaGenerator private constructor() : ITextGenerator {
 	private var schemaMap: MutableMap<String, Any?> = HashMap()
+	private var dataMap: MutableMap<String, Any?> = HashMap()
+	private var annotationMap: MutableMap<String, Any?> = HashMap()
 	private var ruleMap: MutableMap<String, JsonSchemaRule> = HashMap()
-
-
+	
+	
 	fun addRule(ruleName: String, rule: JsonSchemaRule): JsonSchemaGenerator {
 		ruleMap[ruleName] = rule
 		return this
 	}
-
-	override fun execute() {
+	
+	override fun execute(): JsonSchemaGenerator {
 		//递归遍历整个约束映射的深复制，处理原本的约束映射
 		//如果找到了自定义规则，则替换成规则集合中指定的官方规则
 		doRulesRec(schemaMap)
+		return this
 	}
-
+	
 	private fun doRulesRec(map: MutableMap<String, Any?>) {
 		map.keys.forEach { key ->
 			//如果值为映射，则继续向下递归遍历，否则检查是否匹配规则名
@@ -43,12 +46,12 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 			}
 		}
 	}
-
+	
 	override fun generate(outputPath: String) {
 		JsonUtils.toFile(schemaMap, outputPath)
 	}
-
-
+	
+	
 	companion object {
 		private val log = LogFactory.getLog(JsonSchemaGenerator::class.java)
 		
@@ -56,23 +59,24 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 		/**
 		 * 从指定路径 [jsonPath] 的拓展json schema文件读取数据映射。
 		 */
-		fun fromJson(jsonPath: String): JsonSchemaGenerator {
+		fun fromJson(jsonPath: String, dataPath: String = "", annotationPath: String = ""): JsonSchemaGenerator {
 			val generator = JsonSchemaGenerator()
 			generator.schemaMap = JsonUtils.fromFile(jsonPath).toMutableMap()
-			generator.ruleMap = getDefaultRules().toMutableMap()
+			fixedDataPath = if (dataPath == "")
+				generator.ruleMap = getDefaultRules().toMutableMap()
 			return generator
 		}
 		
 		/**
 		 * 从指定路径 [yamlPath] 的拓展yaml schema文件读取数据映射。
 		 */
-		fun fromYaml(yamlPath: String): JsonSchemaGenerator {
+		fun fromYaml(yamlPath: String, dataPath: String = "", annotationPath: String = ""): JsonSchemaGenerator {
 			val generator = JsonSchemaGenerator()
 			generator.schemaMap = YamlUtils.fromFile(yamlPath).toMutableMap()
 			generator.ruleMap = getDefaultRules().toMutableMap()
 			return generator
 		}
-
+		
 		private fun getDefaultRules(): Map<String, JsonSchemaRule> {
 			return mutableMapOf(
 				"language" to { (_, value) ->

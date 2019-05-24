@@ -2,8 +2,9 @@
 
 package com.windea.kotlin.generator
 
+import com.windea.kotlin.annotation.Tested
+import com.windea.kotlin.extension.pathSplit
 import com.windea.kotlin.utils.JsonUtils
-import com.windea.kotlin.utils.PathUtils
 import com.windea.kotlin.utils.YamlUtils
 import org.apache.commons.logging.LogFactory
 import java.nio.file.Files
@@ -12,18 +13,19 @@ import java.nio.file.Path
 /**
  * Intellij IDEA动态模版配置文件的生成器。
  */
+@Tested
 class IdeaLiveTemplateGenerator : ITextGenerator {
 	// 结构：
 	// definitions/$templateName/description
-	// definitions/$templateName/properties/$paramName/description
 	// definitions/$templateName/properties/$paramName/default
 	private var configMap: MutableMap<String, Any?> = HashMap()
 	private var configName: String = "Custom Template"
-	private var configText: String = "<!-- Generate From Kotlin Script Written By DragonKnightOfBreeze. -->\n"
+	private var configText: String = "<!-- Generated from kotlin script written by DragonKnightOfBreeze. -->\n"
 	
 	
-	override fun execute() {
+	override fun execute(): IdeaLiveTemplateGenerator {
 		generateYamlAnnotation()
+		return this
 	}
 	
 	private fun generateYamlAnnotation() {
@@ -38,7 +40,7 @@ class IdeaLiveTemplateGenerator : ITextGenerator {
 			else
 				HashMap()
 			val paramSnippet = if (params.isNotEmpty())
-				": {${params.entries.joinToString(", ") { (k, v) -> "$k: $$v$" }}"
+				": {${params.keys.joinToString(", ") { "$it: $$it$" }}}"
 			else
 				""
 			
@@ -96,6 +98,7 @@ class IdeaLiveTemplateGenerator : ITextGenerator {
 		 */
 		fun fromJson(jsonPath: String): IdeaLiveTemplateGenerator {
 			val generator = IdeaLiveTemplateGenerator()
+			generator.configName = jsonPath.pathSplit().fileShotName
 			generator.configMap = JsonUtils.fromFile(jsonPath).toMutableMap()
 			return generator
 		}
@@ -105,7 +108,7 @@ class IdeaLiveTemplateGenerator : ITextGenerator {
 		 */
 		fun fromYaml(yamlPath: String): IdeaLiveTemplateGenerator {
 			val generator = IdeaLiveTemplateGenerator()
-			generator.configName = PathUtils.subFileExt(yamlPath)
+			generator.configName = yamlPath.pathSplit().fileShotName
 			generator.configMap = YamlUtils.fromFile(yamlPath).toMutableMap()
 			return generator
 		}

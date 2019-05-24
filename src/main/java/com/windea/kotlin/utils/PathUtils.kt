@@ -22,11 +22,11 @@ object PathUtils {
 	}
 
 	/**
-	 * 根据文件路径 [filePath] ，得到切去扩展名的文件路径。
+	 * 根据文件路径 [filePath] ，得到切去扩展名的文件路径。123.123
 	 */
 	fun subFileExt(filePath: String): String {
 		val index = filePath.lastIndexOf(".")
-		return if (index == -1) filePath else filePath.substring(0, index - 1)
+		return if (index == -1) filePath else filePath.substring(0, index)
 	}
 
 	/**

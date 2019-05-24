@@ -2,6 +2,7 @@
 
 package com.windea.kotlin.generator
 
+import com.windea.kotlin.annotation.NotTested
 import com.windea.kotlin.utils.JsonUtils
 import com.windea.kotlin.utils.YamlUtils
 import org.apache.commons.logging.LogFactory
@@ -14,16 +15,18 @@ import kotlin.collections.HashMap
 /**
  * Sql数据语句的生成器类。
  */
+@NotTested
 class SqlGenerator private constructor() : ITextGenerator {
 	// 结构：
 	// $DatabaseName/$table_name/$index/$column_name
 	private var dataMap: MutableMap<String, Any?> = HashMap()
-	private var sqlText: String = "-- Generate From Kotlin Script Written By DragonKnightOfBreeze.\n"
+	private var sqlText: String = "-- Generated from kotlin script written by DragonKnightOfBreeze.\n"
 	
 	
-	override fun execute() {
+	override fun execute(): SqlGenerator {
 		generateSchemaText()
 		generateDataText()
+		return this
 	}
 	
 	private fun generateSchemaText() {
