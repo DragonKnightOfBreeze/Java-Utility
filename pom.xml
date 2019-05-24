@@ -24,6 +24,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <kotlin.version>1.3.31</kotlin.version>
+    <kotlin.compiler.jvmTarget>11</kotlin.compiler.jvmTarget>
   </properties>
 
   <dependencies>
@@ -82,7 +83,6 @@
               <goal>compile</goal>
             </goals>
             <configuration>
-              <args>-jvm-target 11</args>
               <sourceDirs>
                 <source>src/main/kotlin</source>
               </sourceDirs>

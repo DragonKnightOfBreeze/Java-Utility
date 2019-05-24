@@ -7,8 +7,6 @@ import com.windea.kotlin.utils.JsonUtils
 import com.windea.kotlin.utils.YamlUtils
 import org.apache.commons.logging.LogFactory
 
-typealias JsonSchemaRule = (Pair<String, Any?>) -> Map<String, Any?>
-
 /**
  * Json Schema的生成器类。
  */
@@ -53,15 +51,21 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 
 	companion object {
 		private val log = LogFactory.getLog(JsonSchemaGenerator::class.java)
-
-
+		
+		
+		/**
+		 * 从指定路径 [jsonPath] 的拓展json schema文件读取数据映射。
+		 */
 		fun fromJson(jsonPath: String): JsonSchemaGenerator {
 			val generator = JsonSchemaGenerator()
 			generator.schemaMap = JsonUtils.fromFile(jsonPath).toMutableMap()
 			generator.ruleMap = getDefaultRules().toMutableMap()
 			return generator
 		}
-
+		
+		/**
+		 * 从指定路径 [yamlPath] 的拓展yaml schema文件读取数据映射。
+		 */
 		fun fromYaml(yamlPath: String): JsonSchemaGenerator {
 			val generator = JsonSchemaGenerator()
 			generator.schemaMap = YamlUtils.fromFile(yamlPath).toMutableMap()
