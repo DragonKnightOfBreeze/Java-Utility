@@ -30,7 +30,7 @@ class SqlGenerator private constructor() : ITextGenerator {
 	}
 	
 	private fun generateSchemaText() {
-		TODO()
+	
 	}
 	
 	private fun generateDataText() {
@@ -77,20 +77,20 @@ class SqlGenerator private constructor() : ITextGenerator {
 		
 		
 		/**
-		 * 从指定路径 [jsonPath] 的json文件读取数据映射。
+		 * 从指定路径 [dataPath] 的json文件读取数据映射。
 		 */
-		fun fromJson(jsonPath: String): SqlGenerator {
+		fun fromJson(dataPath: String): SqlGenerator {
 			val generator = SqlGenerator()
-			generator.dataMap = JsonUtils.fromFile(jsonPath).toMutableMap()
+			generator.dataMap = JsonUtils.fromFile(dataPath).toMutableMap()
 			return generator
 		}
 		
 		/**
-		 * 从指定路径 [yamlPath] 的yaml文件读取数据映射。
+		 * 从指定路径 [dataPath] 的yaml文件读取数据映射。
 		 */
-		fun fromYaml(yamlPath: String): SqlGenerator {
+		fun fromYaml(dataPath: String): SqlGenerator {
 			val generator = SqlGenerator()
-			generator.dataMap = YamlUtils.fromFile(yamlPath).toMutableMap()
+			generator.dataMap = YamlUtils.fromFile(dataPath).toMutableMap()
 			return generator
 		}
 	}

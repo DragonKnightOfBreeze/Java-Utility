@@ -18,8 +18,9 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 	private var ruleMap: MutableMap<String, JsonSchemaRule> = HashMap()
 	
 	
-	fun addRule(ruleName: String, rule: JsonSchemaRule): JsonSchemaGenerator {
-		ruleMap[ruleName] = rule
+	fun addRules(rules: Map<String, JsonSchemaRule>): JsonSchemaGenerator {
+		//在这里使用+=作为替代或出现方法调用冲突错误，不知道为什么？
+		ruleMap.putAll(rules)
 		return this
 	}
 	
@@ -40,8 +41,9 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 				//如果找到了对应规则名的规则，则执行规则并替换
 				ruleMap[key]?.let {
 					val newRule = it.invoke(Pair(key, value))
-					map.remove(key)
-					map.putAll(newRule)
+					//居然还能直接这样写？
+					map -= key
+					map += newRule
 				}
 			}
 		}
@@ -57,22 +59,25 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 		
 		
 		/**
-		 * 从指定路径 [jsonPath] 的拓展json schema文件读取数据映射。
+		 * 从指定路径 [schemaPath] 的拓展json schema文件读取数据映射。
 		 */
-		fun fromJson(jsonPath: String, dataPath: String = "", annotationPath: String = ""): JsonSchemaGenerator {
+		fun fromJson(schemaPath: String, dataPath: String, annotationPath: String): JsonSchemaGenerator {
 			val generator = JsonSchemaGenerator()
-			generator.schemaMap = JsonUtils.fromFile(jsonPath).toMutableMap()
-			fixedDataPath = if (dataPath == "")
-				generator.ruleMap = getDefaultRules().toMutableMap()
+			generator.schemaMap = JsonUtils.fromFile(schemaPath).toMutableMap()
+			generator.dataMap = JsonUtils.fromFile(dataPath).toMutableMap()
+			generator.annotationMap = JsonUtils.fromFile(annotationPath).toMutableMap()
+			generator.ruleMap = getDefaultRules().toMutableMap()
 			return generator
 		}
 		
 		/**
-		 * 从指定路径 [yamlPath] 的拓展yaml schema文件读取数据映射。
+		 * 从指定路径 [schemaPath] 的拓展yaml schema文件读取数据映射。
 		 */
-		fun fromYaml(yamlPath: String, dataPath: String = "", annotationPath: String = ""): JsonSchemaGenerator {
+		fun fromYaml(schemaPath: String, dataPath: String, annotationPath: String): JsonSchemaGenerator {
 			val generator = JsonSchemaGenerator()
-			generator.schemaMap = YamlUtils.fromFile(yamlPath).toMutableMap()
+			generator.schemaMap = YamlUtils.fromFile(schemaPath).toMutableMap()
+			generator.dataMap = JsonUtils.fromFile(dataPath).toMutableMap()
+			generator.annotationMap = JsonUtils.fromFile(annotationPath).toMutableMap()
 			generator.ruleMap = getDefaultRules().toMutableMap()
 			return generator
 		}

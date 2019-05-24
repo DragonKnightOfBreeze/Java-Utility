@@ -94,22 +94,22 @@ class IdeaLiveTemplateGenerator : ITextGenerator {
 		
 		
 		/**
-		 * 从指定路径 [jsonPath] 的json schema文件读取数据映射。
+		 * 从指定路径 [configPath] 的json schema文件读取数据映射。
 		 */
-		fun fromJson(jsonPath: String): IdeaLiveTemplateGenerator {
+		fun fromJson(configPath: String): IdeaLiveTemplateGenerator {
 			val generator = IdeaLiveTemplateGenerator()
-			generator.configName = jsonPath.pathSplit().fileShotName
-			generator.configMap = JsonUtils.fromFile(jsonPath).toMutableMap()
+			generator.configName = configPath.pathSplit().fileShotName
+			generator.configMap = JsonUtils.fromFile(configPath).toMutableMap()
 			return generator
 		}
 		
 		/**
-		 * 从指定路径 [yamlPath] 的yaml schema文件读取数据映射。
+		 * 从指定路径 [configPath] 的yaml schema文件读取数据映射。
 		 */
-		fun fromYaml(yamlPath: String): IdeaLiveTemplateGenerator {
+		fun fromYaml(configPath: String): IdeaLiveTemplateGenerator {
 			val generator = IdeaLiveTemplateGenerator()
-			generator.configName = yamlPath.pathSplit().fileShotName
-			generator.configMap = YamlUtils.fromFile(yamlPath).toMutableMap()
+			generator.configName = configPath.pathSplit().fileShotName
+			generator.configMap = YamlUtils.fromFile(configPath).toMutableMap()
 			return generator
 		}
 	}
