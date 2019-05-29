@@ -65,7 +65,7 @@ private fun fromPath(input: Any?, path: String): List<Any?> {
 			}
 			//如果子路径表示一个正则表达式，例如："re:Name.*"
 			subPath matches Regex("re:.+") -> {
-				val pattern = subPath.removePrefix("re:")
+				val pattern = subPath.removePrefix("re:").trim()
 				valueList.flatMap { (it as Map<String, Any?>).filterKeys { k -> k matches Regex(pattern) }.values }
 			}
 			//如果是其他情况，例如："Name"
