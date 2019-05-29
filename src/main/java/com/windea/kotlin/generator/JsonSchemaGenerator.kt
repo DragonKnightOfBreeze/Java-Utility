@@ -102,7 +102,7 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 					TODO()
 				},
 				"allowedAnnotation" to { (_, value) ->
-					TODO()
+					TOOD()
 				}
 			)
 		}

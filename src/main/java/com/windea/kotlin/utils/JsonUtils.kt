@@ -50,7 +50,7 @@ object JsonUtils {
 	}
 
 	/**
-	 * 将指定的泛型对象 [data] 写入指定路径 [path] 的json文件。指定缩进 [indent] 。
+	 * 将指定的泛型对象 [data] 写入指定路径 [path] 的json文件。指定缩进 [indent]。
 	 */
 	@Throws(Exception::class)
 	fun <T> toFile(data: T, path: String, indent: Int) {

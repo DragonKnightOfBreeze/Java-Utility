@@ -44,7 +44,7 @@ public class ArrayUtils {
 	}
 
 	/**
-	 * 连接两个数组。可以指定是否去掉重复项。
+	 * 连接两个数组。可指定是否去掉重复项。
 	 */
 	public static <T> T[] concat(boolean allowsDuplicate, @NotNull T[] array, @NotNull T[] other) {
 		var list = Arrays.asList(array);
@@ -57,7 +57,7 @@ public class ArrayUtils {
 	}
 
 	/**
-	 * 连接多个数组。可以指定是否去掉重复项。
+	 * 连接多个数组。可指定是否去掉重复项。
 	 */
 	@SafeVarargs
 	public static <T> T[] concat(boolean allowsDuplicate, @NotNull T[] array, @NotNull T[]... others) {

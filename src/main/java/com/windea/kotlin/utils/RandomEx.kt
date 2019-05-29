@@ -19,37 +19,39 @@ object RandomEx {
 	 * 得到指定范围内的随机数。包含上下限。
 	 */
 	fun range(min: Int, max: Int): Int {
-		if (min > max)
+		if (min > max) {
 			throw IllegalArgumentException("Min Value is greater than max Value.")
+		}
 		return min + random.nextInt(max + 1 - min)
 	}
 
 	/**
-	 * 得到0到指定范围内的随机数。包含上下限。可以指定精确度 [precision] 。
+	 * 得到0到指定范围内的随机数。包含上下限。可指定精确度 [precision]。
 	 */
 	fun range(max: Float, precision: Int = 2): Float {
 		return range(0f, max, precision)
 	}
 
 	/**
-	 * 得到指定范围内的随机数。包含上下限。可以指定精确度 [precision] 。
+	 * 得到指定范围内的随机数。包含上下限。可指定精确度 [precision]。
 	 */
 	fun range(min: Float, max: Float, precision: Int = 2): Float {
-		if (min > max)
+		if (min > max) {
 			throw IllegalArgumentException("Min Value is greater than max Value.")
+		}
 		val ratio = Math.pow(10.toDouble(), precision.toDouble()).toFloat()
 		return range((min * ratio).toInt(), (max * ratio).toInt()) / ratio
 	}
 
 	/**
-	 * 得到0到1的随机数。包含上下限。可以指定精确度 [precision] 。
+	 * 得到0到1的随机数。包含上下限。可指定精确度 [precision]。
 	 */
 	fun range01(precision: Int = 2): Float {
 		return range(0f, 1f, precision)
 	}
 
 	/**
-	 * 得到-1到1的随机数。包含上下限。可以指定精确度 [precision] 。
+	 * 得到-1到1的随机数。包含上下限。可指定精确度 [precision]。
 	 */
 	fun rangeAbs1(precision: Int = 2): Float {
 		return range(-1f, 1f, precision)
@@ -70,14 +72,14 @@ object RandomEx {
 	}
 
 	/**
-	 * 得到以指定数值 [number] 为中心的浮动范围内的随机数。包含上下限。可以指定精确度 [precision] 。
+	 * 得到以指定数值 [number] 为中心的浮动范围内的随机数。包含上下限。可指定精确度 [precision]。
 	 */
 	fun delta(number: Float, limit: Float, precision: Int = 2): Float {
 		return delta(number, limit, limit, precision)
 	}
 
 	/**
-	 * 得到以指定数值 [number] 为中心的浮动范围内的随机数。包含上下限。可以指定精确度 [precision] 。
+	 * 得到以指定数值 [number] 为中心的浮动范围内的随机数。包含上下限。可指定精确度 [precision]。
 	 */
 	fun delta(number: Float, lowerLimit: Float, upperLimit: Float, precision: Int = 2): Float {
 		val ratio = Math.pow(10.toDouble(), precision.toDouble()).toFloat()

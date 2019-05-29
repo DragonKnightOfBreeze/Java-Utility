@@ -7,14 +7,14 @@ import java.util.*
  */
 object PathUtils {
 	/**
-	 * 根据路径片段 [paths] ，组成完整路径。允许混合两种分隔符。
+	 * 根据路径片段 [paths]，组成完整路径。允许混合两种分隔符。
 	 */
 	fun join(vararg paths: String): String {
 		return paths.joinToString("\\").replace("", "\\")
 	}
 
 	/**
-	 * 根据文件路径 [filePath] ，得到文件名。
+	 * 根据文件路径 [filePath]，得到文件名。
 	 */
 	fun getFileName(filePath: String): String {
 		val index = filePath.lastIndexOf("\\")
@@ -22,7 +22,7 @@ object PathUtils {
 	}
 
 	/**
-	 * 根据文件路径 [filePath] ，得到切去扩展名的文件路径。123.123
+	 * 根据文件路径 [filePath]，得到切去扩展名的文件路径。123.123
 	 */
 	fun subFileExt(filePath: String): String {
 		val index = filePath.lastIndexOf(".")
@@ -30,7 +30,7 @@ object PathUtils {
 	}
 
 	/**
-	 * 根据文件路径 [filePath] ，得到带有"."的文件扩展名。如果没有，则返回空字符串。
+	 * 根据文件路径 [filePath]，得到带有"."的文件扩展名。如果没有，则返回空字符串。
 	 */
 	fun getFileExt(filePath: String): String {
 		val index = filePath.lastIndexOf(".")
@@ -38,7 +38,7 @@ object PathUtils {
 	}
 
 	/**
-	 * 根据文件路径 [filePath] 和新扩展名 [newFileExt] ，更改带有"."的文件扩展名。
+	 * 根据文件路径 [filePath] 和新扩展名 [newFileExt]，更改带有"."的文件扩展名。
 	 */
 	fun changeFileExt(filePath: String, newFileExt: String): String {
 		return subFileExt(filePath) + newFileExt
