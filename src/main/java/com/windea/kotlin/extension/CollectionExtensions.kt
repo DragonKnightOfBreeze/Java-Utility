@@ -2,6 +2,8 @@
 
 package com.windea.kotlin.extension
 
+import com.windea.kotlin.annotation.NotTested
+
 //路径查找方法
 
 /**
@@ -15,6 +17,7 @@ package com.windea.kotlin.extension
  * * re:Name.* 表示一个属性/键匹配指定正则的对象/映射。
  * * Name 表示一个对象/映射的属性/键。
  */
+@NotTested
 fun <K, V> Map<K, V>.fromPath(path: String): List<Any?> = fromPath(this, path)
 
 /**
@@ -28,6 +31,7 @@ fun <K, V> Map<K, V>.fromPath(path: String): List<Any?> = fromPath(this, path)
  * * re:Name.* 表示一个属性/键匹配指定正则的对象/映射。
  * * Name 表示一个对象/映射的属性/键。
  */
+@NotTested
 fun <E> List<E>.fromPath(path: String): List<Any?> = fromPath(this, path)
 
 private fun fromPath(input: Any?, path: String): List<Any?> {
