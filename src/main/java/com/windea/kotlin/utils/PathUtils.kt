@@ -45,7 +45,7 @@ object PathUtils {
 	}
 
 	/**
-	 * 生成随机的文件名（保留拓展名）。
+	 * 生成随机的文件名（保留扩展名）。
 	 */
 	fun getRandomFileName(fileName: String): String {
 		val uuid = UUID.randomUUID().toString()

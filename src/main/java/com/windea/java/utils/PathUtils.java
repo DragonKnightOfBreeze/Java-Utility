@@ -62,7 +62,7 @@ public class PathUtils {
 	}
 
 	/**
-	 * 生成随机的文件名（保留拓展名）。
+	 * 生成随机的文件名（保留扩展名）。
 	 */
 	@NotNull
 	public static String getRandomFileName(@NotNull String fileName) {

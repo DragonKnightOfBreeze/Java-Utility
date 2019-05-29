@@ -103,7 +103,7 @@ fun String.pathJoin(vararg paths: String): String {
 }
 
 /**
- * 根据当前文件路径，得到包含文件名、文件拓展名等信息的路径信息对象。
+ * 根据当前文件路径，得到包含文件名、文件扩展名等信息的路径信息对象。
  */
 fun String.pathSplit(): PathInfo {
 	val dirIndex = this.lastIndexOf("\\")

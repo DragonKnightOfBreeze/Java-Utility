@@ -13,7 +13,7 @@ import java.util.*
 import kotlin.collections.HashMap
 
 /**
- * Sql数据语句的生成器类。
+ * Sql语句的生成器。
  */
 @NotTested
 class SqlGenerator private constructor() : ITextGenerator {
@@ -30,7 +30,7 @@ class SqlGenerator private constructor() : ITextGenerator {
 	}
 	
 	private fun generateSchemaText() {
-	
+		//NOTE 不生成，因为Spring Boot可以动态创建表
 	}
 	
 	private fun generateDataText() {
@@ -56,7 +56,7 @@ class SqlGenerator private constructor() : ITextGenerator {
 	}
 	
 	private fun quoteText(text: Any?): String {
-		return when (text) {
+		return when(text) {
 			is String -> "'$text'"
 			is Date -> "'${SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(text)}'"
 			else -> text.toString()

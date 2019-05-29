@@ -39,6 +39,7 @@ class IdeaLiveTemplateGenerator : ITextGenerator {
 				template["properties"] as Map<String, Map<String, Any?>>
 			else
 				HashMap()
+			//TODO 允许自定义格式
 			val paramSnippet = if (params.isNotEmpty())
 				": {${params.keys.joinToString(", ") { "$it: $$it$" }}}"
 			else
@@ -96,7 +97,7 @@ class IdeaLiveTemplateGenerator : ITextGenerator {
 		/**
 		 * 从指定路径 [configPath] 的json schema文件读取数据映射。
 		 */
-		fun fromJson(configPath: String): IdeaLiveTemplateGenerator {
+		fun fromJsonSchema(configPath: String): IdeaLiveTemplateGenerator {
 			val generator = IdeaLiveTemplateGenerator()
 			generator.configName = configPath.pathSplit().fileShotName
 			generator.configMap = JsonUtils.fromFile(configPath).toMutableMap()
@@ -106,7 +107,7 @@ class IdeaLiveTemplateGenerator : ITextGenerator {
 		/**
 		 * 从指定路径 [configPath] 的yaml schema文件读取数据映射。
 		 */
-		fun fromYaml(configPath: String): IdeaLiveTemplateGenerator {
+		fun fromYamlSchema(configPath: String): IdeaLiveTemplateGenerator {
 			val generator = IdeaLiveTemplateGenerator()
 			generator.configName = configPath.pathSplit().fileShotName
 			generator.configMap = YamlUtils.fromFile(configPath).toMutableMap()
