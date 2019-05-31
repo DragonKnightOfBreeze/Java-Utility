@@ -3,7 +3,7 @@
 package com.windea.kotlin.generator
 
 import com.windea.kotlin.annotation.NotTested
-import com.windea.kotlin.extension.fromPath
+import com.windea.kotlin.extension.query
 import com.windea.kotlin.utils.JsonUtils
 import com.windea.kotlin.utils.YamlUtils
 import org.apache.commons.logging.LogFactory
@@ -54,7 +54,7 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 			},
 			"generatedFrom" to { (_, value) ->
 				//提取$dataMap中的路径`$value`对应的值列表
-				val enumConsts = dataMap.fromPath(value as String)
+				val enumConsts = dataMap.query(value as String)
 				mapOf("enum" to enumConsts)
 			},
 			"allowedAnnotation" to { (_, _) ->
@@ -66,7 +66,7 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 	
 	//标记为尾部调用以增强性能
 	private tailrec fun doRulesRec(map: MutableMap<String, Any?>) {
-		map.keys.forEach { key ->
+		for(key in map.keys) {
 			//如果值为映射，则继续向下递归遍历，否则检查是否匹配规则名
 			val value = map[key]
 			if(value is MutableMap<*, *>) {

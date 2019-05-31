@@ -4,8 +4,11 @@ import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 import java.security.SecureRandom
 
-object RandomEx {
-	private val log: Log = LogFactory.getLog(RandomEx::class.java)
+/**
+ * 随机数的工具类。
+ */
+object RandomUtils {
+	private val log: Log = LogFactory.getLog(RandomUtils::class.java)
 	private val random = SecureRandom()
 
 	/**

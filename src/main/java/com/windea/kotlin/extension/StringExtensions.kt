@@ -31,6 +31,20 @@ fun String.endsWith(vararg suffixes: String, ignoreCase: Boolean = false): Boole
 //转换方法
 
 /**
+ * 转义字符串。例如，将`\\n`转换为`\n`。
+ */
+fun String.escape(): String {
+	return this.replace("\\n", "\n").replace("\\r", "\r").replace("\\t", "\t")
+}
+
+/**
+ * 反转义字符串。例如，将`\n`转换为`\\n`。
+ */
+fun String.unescape(): String {
+	return this.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
+}
+
+/**
  * 转换字符串的显示格式。
  */
 fun String.switchCase(fromCase: StringCase, toCase: StringCase): String {

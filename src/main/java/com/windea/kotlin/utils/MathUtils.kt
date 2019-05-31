@@ -3,8 +3,11 @@ package com.windea.kotlin.utils
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 
-object MathEx {
-	private val log: Log = LogFactory.getLog(MathEx::class.java)
+/**
+ * 数学的工具类。
+ */
+object MathUtils {
+	private val log: Log = LogFactory.getLog(MathUtils::class.java)
 	
 	
 	/**

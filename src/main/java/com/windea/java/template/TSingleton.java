@@ -2,12 +2,11 @@ package com.windea.java.template;
 
 import com.windea.java.annotation.PerformanceAffectPossible;
 
-import java.lang.reflect.InvocationTargetException;
-
 /**
  * 通用单例类 - 双重校验锁。
  */
 @PerformanceAffectPossible
+@SuppressWarnings("unchecked")
 public class TSingleton {
 	private static volatile TSingleton instance;
 
@@ -17,10 +16,7 @@ public class TSingleton {
 	/**
 	 * 得到单例实例。
 	 */
-	@SuppressWarnings("unchecked")
-	public static <T extends TSingleton> T getInstance(Class<T> clazz)
-	throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException,
-		InstantiationException {
+	public static <T extends TSingleton> T getInstance(Class<T> clazz) throws Exception {
 		if(instance == null) {
 			synchronized(TSingleton.class) {
 				if(instance == null) {
