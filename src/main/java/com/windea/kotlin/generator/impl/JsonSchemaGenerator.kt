@@ -1,9 +1,11 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.windea.kotlin.generator
+package com.windea.kotlin.generator.impl
 
 import com.windea.kotlin.annotation.NotTested
 import com.windea.kotlin.extension.query
+import com.windea.kotlin.generator.ITextGenerator
+import com.windea.kotlin.generator.JsonSchemaRule
 import com.windea.kotlin.utils.JsonUtils
 import com.windea.kotlin.utils.YamlUtils
 import org.apache.commons.logging.LogFactory
@@ -15,7 +17,6 @@ import org.apache.commons.logging.LogFactory
 class JsonSchemaGenerator private constructor() : ITextGenerator {
 	private var schemaMap: MutableMap<String, Any?> = HashMap()
 	private var dataMap: MutableMap<String, Any?> = HashMap()
-	private var annotationMap: MutableMap<String, Any?> = HashMap()
 	private var ruleMap: MutableMap<String, JsonSchemaRule> = HashMap()
 	
 	
@@ -89,28 +90,29 @@ class JsonSchemaGenerator private constructor() : ITextGenerator {
 	
 	
 	companion object {
+		@JvmStatic
 		private val log = LogFactory.getLog(JsonSchemaGenerator::class.java)
 		
 		
 		/**
 		 * 从指定路径 [schemaPath] 的扩展json schema文件读取数据映射。
 		 */
+		@JvmStatic
 		fun fromExtJsonSchema(schemaPath: String, dataPath: String, annotationPath: String): JsonSchemaGenerator {
 			val generator = JsonSchemaGenerator()
 			generator.schemaMap = JsonUtils.fromFile(schemaPath).toMutableMap()
 			generator.dataMap = JsonUtils.fromFile(dataPath).toMutableMap()
-			generator.annotationMap = JsonUtils.fromFile(annotationPath).toMutableMap()
 			return generator
 		}
 		
 		/**
 		 * 从指定路径 [schemaPath] 的扩展yaml schema文件读取数据映射。
 		 */
+		@JvmStatic
 		fun fromExtYamlSchema(schemaPath: String, dataPath: String, annotationPath: String): JsonSchemaGenerator {
 			val generator = JsonSchemaGenerator()
 			generator.schemaMap = YamlUtils.fromFile(schemaPath).toMutableMap()
 			generator.dataMap = JsonUtils.fromFile(dataPath).toMutableMap()
-			generator.annotationMap = JsonUtils.fromFile(annotationPath).toMutableMap()
 			return generator
 		}
 	}

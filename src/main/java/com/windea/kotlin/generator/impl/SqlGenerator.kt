@@ -1,8 +1,9 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.windea.kotlin.generator
+package com.windea.kotlin.generator.impl
 
 import com.windea.kotlin.annotation.NotTested
+import com.windea.kotlin.generator.ITextGenerator
 import com.windea.kotlin.utils.JsonUtils
 import com.windea.kotlin.utils.YamlUtils
 import org.apache.commons.logging.LogFactory
@@ -19,7 +20,7 @@ import kotlin.collections.HashMap
 class SqlGenerator private constructor() : ITextGenerator {
 	// 结构：
 	// $DatabaseName/$table_name/$index/$column_name
-	private var dataMap: MutableMap<String, Any?> = HashMap()
+	private var sqlMap: MutableMap<String, Any?> = HashMap()
 	private var sqlText: String = "-- Generated from kotlin script written by DragonKnightOfBreeze.\n"
 	
 	
@@ -34,8 +35,8 @@ class SqlGenerator private constructor() : ITextGenerator {
 	}
 	
 	private fun generateDataText() {
-		val databaseName = dataMap.keys.first()
-		val database = dataMap[databaseName] as Map<String, List<Map<String, Any?>>>
+		val databaseName = sqlMap.keys.first()
+		val database = sqlMap[databaseName] as Map<String, List<Map<String, Any?>>>
 		
 		sqlText += """
 		|use $databaseName;
@@ -73,24 +74,27 @@ class SqlGenerator private constructor() : ITextGenerator {
 	
 	
 	companion object {
+		@JvmStatic
 		private val log = LogFactory.getLog(SqlGenerator::class.java)
 		
 		
 		/**
 		 * 从指定路径 [dataPath] 的json文件读取数据映射。
 		 */
+		@JvmStatic
 		fun fromJson(dataPath: String): SqlGenerator {
 			val generator = SqlGenerator()
-			generator.dataMap = JsonUtils.fromFile(dataPath).toMutableMap()
+			generator.sqlMap = JsonUtils.fromFile(dataPath).toMutableMap()
 			return generator
 		}
 		
 		/**
 		 * 从指定路径 [dataPath] 的yaml文件读取数据映射。
 		 */
+		@JvmStatic
 		fun fromYaml(dataPath: String): SqlGenerator {
 			val generator = SqlGenerator()
-			generator.dataMap = YamlUtils.fromFile(dataPath).toMutableMap()
+			generator.sqlMap = YamlUtils.fromFile(dataPath).toMutableMap()
 			return generator
 		}
 	}

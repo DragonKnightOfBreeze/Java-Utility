@@ -1,9 +1,10 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.windea.kotlin.generator
+package com.windea.kotlin.generator.impl
 
 import com.windea.kotlin.annotation.Tested
 import com.windea.kotlin.extension.pathSplit
+import com.windea.kotlin.generator.ITextGenerator
 import com.windea.kotlin.utils.JsonUtils
 import com.windea.kotlin.utils.YamlUtils
 import org.apache.commons.logging.LogFactory
@@ -15,12 +16,9 @@ import java.nio.file.Path
  */
 @Tested
 class IdeaLiveTemplateGenerator : ITextGenerator {
-	// 结构：
-	// definitions/$templateName/description
-	// definitions/$templateName/properties/$paramName/default
 	private var configMap: MutableMap<String, Any?> = HashMap()
-	private var configName: String = "Custom Template"
 	private var configText: String = "<!-- Generated from kotlin script written by DragonKnightOfBreeze. -->\n"
+	private var configName: String = "Custom Template"
 	
 	
 	override fun execute(): IdeaLiveTemplateGenerator {
@@ -91,26 +89,29 @@ class IdeaLiveTemplateGenerator : ITextGenerator {
 	
 	
 	companion object {
+		@JvmStatic
 		private val log = LogFactory.getLog(IdeaLiveTemplateGenerator::class.java)
 		
 		
 		/**
 		 * 从指定路径 [configPath] 的json schema文件读取数据映射。
 		 */
+		@JvmStatic
 		fun fromJsonSchema(configPath: String): IdeaLiveTemplateGenerator {
 			val generator = IdeaLiveTemplateGenerator()
-			generator.configName = configPath.pathSplit().fileShotName
 			generator.configMap = JsonUtils.fromFile(configPath).toMutableMap()
+			generator.configName = configPath.pathSplit().fileShotName
 			return generator
 		}
 		
 		/**
 		 * 从指定路径 [configPath] 的yaml schema文件读取数据映射。
 		 */
+		@JvmStatic
 		fun fromYamlSchema(configPath: String): IdeaLiveTemplateGenerator {
 			val generator = IdeaLiveTemplateGenerator()
-			generator.configName = configPath.pathSplit().fileShotName
 			generator.configMap = YamlUtils.fromFile(configPath).toMutableMap()
+			generator.configName = configPath.pathSplit().fileShotName
 			return generator
 		}
 	}
