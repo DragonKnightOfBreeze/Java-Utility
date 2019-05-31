@@ -1,3 +1,3 @@
 # Java-Utility
 
-［Java］Java实用代码整理
+Java实用代码整理。
