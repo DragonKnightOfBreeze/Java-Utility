@@ -46,8 +46,8 @@ public abstract class TBean<ID> implements Serializable {
 	}
 
 	/**
-	 * 重写后的转化成字符串方法，写入所有匹配get方法的基本封装类型的属性。可以指定是否换行和缩进。<br>
-	 * indent=-1使用tab缩进。
+	 * 重写后的转化成字符串方法，写入所有匹配get方法的基本封装类型的属性。可指定是否换行和缩进。<br>
+	 * indent=-1时使用tab缩进。
 	 */
 	@Override
 	public String toString() {

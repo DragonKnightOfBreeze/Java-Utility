@@ -17,7 +17,7 @@ public class PathUtils {
 	 */
 	@NotNull
 	public static String join(@NotNull String... path) {
-		return (String.join("\\", path).replace("", "\\"));
+		return (String.join("\\", path).replace("/", "\\"));
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class PathUtils {
 		int index = fileName.lastIndexOf(".");
 		if(index == -1)
 			return fileName;
-		return fileName.substring(0, index - 1);
+		return fileName.substring(0, index);
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class PathUtils {
 	}
 
 	/**
-	 * 生成随机的文件名（保留拓展名）。
+	 * 生成随机的文件名（保留扩展名）。
 	 */
 	@NotNull
 	public static String getRandomFileName(@NotNull String fileName) {

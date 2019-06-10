@@ -45,7 +45,7 @@ public class CollectionUtils {
 	}
 
 	/**
-	 * 连接两个集合。可以指定是否去掉重复项。
+	 * 连接两个集合。可指定是否去掉重复项。
 	 */
 	public static <C extends Collection<E>, E> C concat(boolean allowsDuplicate,
 		@NotNull C collection, @NotNull C other) {
@@ -57,7 +57,7 @@ public class CollectionUtils {
 	}
 
 	/**
-	 * 连接多个集合。可以指定是否去掉重复项。
+	 * 连接多个集合。可指定是否去掉重复项。
 	 */
 	@SafeVarargs
 	public static <C extends Collection<E>, E> C concat(boolean allowsDuplicate,
@@ -104,7 +104,7 @@ public class CollectionUtils {
 	}
 
 	/**
-	 * 连接两个映射。可以指定是否覆盖重复项。
+	 * 连接两个映射。可指定是否覆盖重复项。
 	 */
 	public static <M extends Map<K, V>, K, V> M concat(boolean allowsMerge,
 		@NotNull M map, @NotNull M other) {
@@ -120,7 +120,7 @@ public class CollectionUtils {
 	}
 
 	/**
-	 * 连接多个映射。可以指定是否覆盖重复项。
+	 * 连接多个映射。可指定是否覆盖重复项。
 	 */
 	@SafeVarargs
 	public static <M extends Map<K, V>, K, V> M concat(boolean allowsMerge,
