@@ -13,6 +13,12 @@
   <description>Java实用代码整理。</description>
   <url>https://github.com/DragonKnightOfBreeze/Java-Utility</url>
 
+  <scm>
+    <connection>scm:git@github.com:DragonKnightOfBreeze/Java-Utility.git</connection>
+    <developerConnection>scm:git@github.com:DragonKnightOfBreeze/Java-Utility.git</developerConnection>
+    <url>git@github.com:DragonKnightOfBreeze/Java-Utility.git</url>
+  </scm>
+
   <properties>
     <java.version>11</java.version>
     <maven.compiler.source>11</maven.compiler.source>
